@@ -1,0 +1,10 @@
+.DS_Store
+*.log
+*.tsbuildinfo
+dist/
+node_modules/
+.emscripten_cache
+build
+wasm/*.js
+wasm/*.wasm*
+vendor
