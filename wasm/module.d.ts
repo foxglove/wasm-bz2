@@ -13,3 +13,4 @@ export type BZ2Module = EmscriptenModule & {
 };
 
 const ModuleFactory: EmscriptenModuleFactory<BZ2Module>;
+export default ModuleFactory;

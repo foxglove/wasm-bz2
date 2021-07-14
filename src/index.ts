@@ -41,7 +41,7 @@ export default {
         src.byteLength,
         small ? 1 : 0
       );
-      if (code !== 0 || !buffer) {
+      if (code !== 0 || buffer == undefined) {
         throw new Error(
           `BZ2 decompression failed: ${code} (${error ?? "unknown"})`
         );
