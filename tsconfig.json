@@ -4,6 +4,7 @@
   "compilerOptions": {
     "rootDir": "./src",
     "outDir": "./dist",
-    "lib": ["dom", "es2020"]
+    "lib": ["dom", "es2020"],
+    "module": "commonjs"
   }
 }
