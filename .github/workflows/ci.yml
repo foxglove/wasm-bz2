@@ -20,6 +20,17 @@ jobs:
       - run: npm ci
       - run: npm run build:ts
       - run: npm run lint:ci
+
+      - name: Restore emscripten build cache
+        uses: actions/cache@v2.1.4
+        with:
+          path: |
+            .emscripten_cache
+          key: 1-emscripten-${{ hashFiles('build.sh') }}
+          restore-keys: |
+            1-emscripten-
+
+      - run: npm run build:wasm
       - run: npm run test
 
       - name: Publish to NPM
