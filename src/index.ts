@@ -5,12 +5,8 @@
 import ModuleFactory, { BZ2Module } from "../wasm/module";
 
 export default class Bzip2 {
-  static async init({
-    locateFile,
-  }: {
-    locateFile?: (url: string, scriptDirectory: string) => string;
-  } = {}): Promise<Bzip2> {
-    return new Bzip2(await ModuleFactory({ locateFile }));
+  static async init(): Promise<Bzip2> {
+    return new Bzip2(await ModuleFactory());
   }
 
   private constructor(private module: BZ2Module) {}

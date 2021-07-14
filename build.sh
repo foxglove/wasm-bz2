@@ -40,6 +40,7 @@ function run_emcc() {
         -s "EXTRA_EXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']" \
         -s FILESYSTEM=0 `# we don't need filesystem support. This should reduce file sizes` \
         -s MODULARIZE=1 \
+        --pre-js "$WORK_DIR/src/pre.js" \
         -s WARN_UNALIGNED=1 \
         -s WASM=1 \
         -s DISABLE_EXCEPTION_CATCHING=1 \
