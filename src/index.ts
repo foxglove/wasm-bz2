@@ -4,37 +4,27 @@
 
 import ModuleFactory, { BZ2Module } from "../wasm/module";
 
-let loaded = false;
-let Module: BZ2Module;
+export default class Bzip2 {
+  static async init({
+    locateFile,
+  }: {
+    locateFile?: (url: string, scriptDirectory: string) => string;
+  } = {}): Promise<Bzip2> {
+    return new Bzip2(await ModuleFactory({ locateFile }));
+  }
 
-const isLoaded = new Promise<void>((resolve, reject) => {
-  ModuleFactory({
-    onRuntimeInitialized: () => {
-      loaded = true;
-      resolve();
-    },
-  })
-    .then((module) => (Module = module))
-    .catch(reject);
-});
+  private constructor(private module: BZ2Module) {}
 
-export default {
-  isLoaded,
   decompress(
     src: Uint8Array,
     destSize: number,
     { small = false } = {}
   ): Uint8Array {
-    if (!loaded) {
-      throw new Error(
-        "wasm-bz2 module not initialized; await isLoaded before calling decompress"
-      );
-    }
-    const srcBuf = Module._malloc(src.byteLength); // eslint-disable-line no-underscore-dangle
-    const dstBuf = Module._malloc(destSize); // eslint-disable-line no-underscore-dangle
-    Module.HEAPU8.subarray(srcBuf, srcBuf + src.byteLength).set(src);
+    const srcBuf = this.module._malloc(src.byteLength); // eslint-disable-line no-underscore-dangle
+    const dstBuf = this.module._malloc(destSize); // eslint-disable-line no-underscore-dangle
+    this.module.HEAPU8.subarray(srcBuf, srcBuf + src.byteLength).set(src);
     try {
-      const { code, error, buffer } = Module.decompress(
+      const { code, error, buffer } = this.module.decompress(
         dstBuf,
         destSize,
         srcBuf,
@@ -48,8 +38,8 @@ export default {
       }
       return new Uint8Array(buffer); // copy out of emscripten heap before freeing
     } finally {
-      Module._free(srcBuf); // eslint-disable-line no-underscore-dangle
-      Module._free(dstBuf); // eslint-disable-line no-underscore-dangle
+      this.module._free(srcBuf); // eslint-disable-line no-underscore-dangle
+      this.module._free(dstBuf); // eslint-disable-line no-underscore-dangle
     }
-  },
-};
+  }
+}
