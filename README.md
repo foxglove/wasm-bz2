@@ -13,10 +13,7 @@ This package provides a WebAssembly build of https://gitlab.com/federicomenaquin
 ```ts
 import Bzip2 from "@foxglove/wasm-bz2";
 
-const bzip2 = await Bzip2.init({
-   // optional locateFile for when the Emscripten module can't automatically find the wasm file
-  locateFile: () => new URL("@foxglove/wasm-bz2/wasm/module.wasm", import.meta.url).toString(),
-});
+const bzip2 = await Bzip2.init();
 
 try {
   const buffer = new Uint8Array([...]);
