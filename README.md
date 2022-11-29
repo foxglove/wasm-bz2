@@ -6,7 +6,7 @@ Bzip2 decompression compiled to WebAssembly
 
 ## Introduction
 
-This package provides a WebAssembly build of https://gitlab.com/federicomenaquintero/bzip2, the official Bzip2 library. Currently only a decompression function is provided.
+This package provides a WebAssembly build of https://gitlab.com/bzip2/bzip2, the official Bzip2 library. Currently only a decompression function is provided.
 
 ## Usage
 

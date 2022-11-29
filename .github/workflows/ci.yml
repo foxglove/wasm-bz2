@@ -41,7 +41,10 @@ jobs:
             1-emscripten-
 
       - run: npm run build:wasm
+
+      # Catch Node import failures that don't reproduce in Jest <https://github.com/foxglove/wasm-bz2/issues/4>
       - run: node -e 'require("./dist/index.js").default.init()'
+
       - run: npm run test
 
       - name: Publish to NPM
