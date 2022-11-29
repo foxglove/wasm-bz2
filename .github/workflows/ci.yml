@@ -41,6 +41,7 @@ jobs:
             1-emscripten-
 
       - run: npm run build:wasm
+      - run: node -e 'require("./dist/index.js").default.init()'
       - run: npm run test
 
       - name: Publish to NPM
