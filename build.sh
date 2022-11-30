@@ -3,12 +3,12 @@
 set -euo pipefail
 
 WORK_DIR=`pwd`/`dirname $0`
-IMAGE=emscripten/emsdk:3.1.0
+IMAGE=emscripten/emsdk:3.1.26
 
 # Clone the bzip2 repo
 if [ ! -d "$WORK_DIR/vendor" ]; then
     mkdir -p "$WORK_DIR/vendor"
-    git clone https://gitlab.com/federicomenaquintero/bzip2 "$WORK_DIR"/vendor/bzip2
+    git clone https://gitlab.com/bzip2/bzip2 "$WORK_DIR"/vendor/bzip2
     (cd "$WORK_DIR"/vendor/bzip2 && git checkout 6211b6500c8bec13a17707440d3a84ca8b34eed5)
 fi
 

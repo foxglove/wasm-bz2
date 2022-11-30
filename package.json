@@ -1,6 +1,6 @@
 {
   "name": "@foxglove/wasm-bz2",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Bzip2 decompression compiled to WebAssembly",
   "license": "MIT",
   "repository": {
@@ -46,5 +46,8 @@
     "jest-ts-webcompat-resolver": "1.0.0",
     "prettier": "2.3.2",
     "typescript": "4.3.5"
+  },
+  "dependencies": {
+    "tslib": "^2"
   }
 }
