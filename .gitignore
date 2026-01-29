@@ -8,3 +8,12 @@ build
 wasm/*.js
 wasm/*.wasm*
 vendor
+
+# Yarn
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
