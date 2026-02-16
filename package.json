@@ -1,6 +1,6 @@
 {
   "name": "@foxglove/wasm-bz2",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "Bzip2 decompression compiled to WebAssembly",
   "license": "MIT",
   "repository": {
@@ -13,6 +13,7 @@
     "url": "https://foxglove.dev/"
   },
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist",
     "src",
