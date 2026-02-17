@@ -1,6 +1,6 @@
 {
   "name": "@foxglove/wasm-bz2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Bzip2 decompression compiled to WebAssembly",
   "license": "MIT",
   "repository": {
