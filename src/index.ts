@@ -1,6 +1,6 @@
 import ModuleFactory, { BZ2Module } from "../wasm/module";
 
-export default class Bzip2 {
+class Bzip2 {
   static async init(): Promise<Bzip2> {
     return new Bzip2(await ModuleFactory());
   }
@@ -35,3 +35,5 @@ export default class Bzip2 {
     }
   }
 }
+
+export = Bzip2;
